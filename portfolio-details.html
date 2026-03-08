@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Portfolio Details</title>
+
+  <!-- CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+<main class="main">
+
+  <!-- PAGE TITLE -->
+  <div class="page-title dark-background py-4">
+    <div class="container">
+      <h1 id="project-title"></h1>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <section class="portfolio-details section py-5">
+    <div class="container">
+      <div class="row gy-4">
+
+  <!-- SLIDER -->
+  <div class="col-lg-8">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper" id="project-images"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <div class="col-lg-4">
+    <div class="portfolio-info">
+      <h3>Project Information</h3>
+      <ul id="project-info-list"></ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ABOUT PROJECT DI BAWAH -->
+<div class="row mt-4">
+  <div class="col-lg-12">
+    <div class="portfolio-description">
+      <h3>About the Project</h3>
+      <p id="project-description"></p>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- JS -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<script>
+
+// GET ID FROM URL
+const params = new URLSearchParams(window.location.search);
+const projectId = params.get("id");
+
+// PROJECT DATABASE
+const projects = {
+
+  dotas: {
+    title: "Day of Togetherness and Sharing (D.O.T.S.) 2024",
+    info: {
+      "Program Type": "Community & Leadership Event",
+      "Role": "Creative Division Coordinator",
+      "Organizer": "HMPSSI (Information Systems Student Association)",
+      "Location": "UPH Medan Kampus Aryaduta",
+      "Participants": "56 Students",
+      "Skills": "Event Planning, Creative Direction, Team Coordination, Public Engagement"
+    },
+    description: `
+Day of Togetherness and Sharing (D.O.T.S.) is a work program organized to introduce campus life and student organization activities to new Information Systems students.
+
+The event consisted of seminars, interactive talk shows, and collaborative games designed to foster teamwork and engagement.
+
+As the Creative Coordinator, I was responsible for designing interactive session concepts, developing game ideas, and ensuring the overall flow of the event remained engaging and structured.
+
+The program achieved 100% of its participant target and received an average satisfaction score of 4.69/5 based on internal survey results.
+    `,
+    media: [
+      { type: "image", src: "assets/img/portfolio/dots0.jpg" },
+      { type: "image", src: "assets/img/portfolio/dots1.jpg" },
+      { type: "image", src: "assets/img/portfolio/dots2.jpg" },
+      { type: "image", src: "assets/img/portfolio/dots3.jpg" }
+    ]
+  },
+
+  codytour: {
+  title: "Cody Tour 2025 – International Academic & Cultural Visit",
+  info: {
+    "Program Type": "International Study Tour",
+    "Role": "Treasurer & Registration Division Coordinator",
+    "Organizer": "HMPSSI (Information Systems Student Association)",
+    "Participants": "25 Participants (Students, Committees, Lecturers)",
+    "Location": "Kuala Lumpur, Malaysia",
+    "Duration": "3 Days (7–9 March 2025)",
+    "Skills": "Financial Management, Event Coordination, Logistics Planning, Participant Management"
+  },
+
+  description: `
+Cody Tour 2025 was an international academic and cultural visit organized by the Information Systems Student Association (HMPSSI) of Universitas Pelita Harapan Medan Campus. The program aimed to provide students with international exposure through academic activities and cultural exploration in Kuala Lumpur, Malaysia.
+
+The program included a university visit to Asia Pacific University of Technology & Innovation (APU), where participants attended academic sessions such as an Introduction to APU, a session with the AUISS student organization, and a Digital Thinking Seminar discussing innovation in the digital technology industry. Participants also joined a guided campus tour to explore APU’s facilities and learning environment.
+
+In addition to academic activities, the program also included cultural exploration in Kuala Lumpur, visiting several iconic locations such as Batu Caves, Dataran Merdeka, and the Petronas Twin Towers (KLCC).
+
+As the Treasurer and Registration Division Coordinator, I was responsible for managing participant registration, maintaining financial records, and ensuring financial transparency during the event. I also handled logistical coordination including purchasing flight tickets and hotel reservations, as well as distributing travel documents and tickets to all participants to ensure a smooth and well-organized travel experience.
+
+The program involved 25 participants consisting of students, committee members, and lecturers, and achieved a high satisfaction score of 4.64/5 based on post-event survey results.
+
+This project demonstrates my ability to manage finances, coordinate international travel logistics, and organize academic events involving multiple participants.
+  `,
+
+  media: [
+    { type: "image", src: "assets/img/portfolio/codytour3.jpeg" },
+    { type: "image", src: "assets/img/portfolio/codytour2.jpeg" },
+    { type: "image", src: "assets/img/portfolio/codytour4.jpeg" }
+    
+  ]
+},
+
+infofest: {
+  title: "INFOFEST 2025 – Systemize to Monetize",
+
+  info: {
+    "Project Type": "Technology Festival & Academic Event",
+    "Role": "Registration and Documentation Coordinator ",
+    "Focus Area": "Digital Transformation, UI/UX Design, Technology Innovation",
+    "Organizer": "HMPSSI (Information Systems Student Association)",
+    "Event Format": "Seminar, Workshop, and Networking",
+    "Participants": "56 partcipants",
+    "Skills": "Event Planning, Creative Direction, Team Coordination, Public Engagement"
+    
+  },
+
+  description: `
+INFOFEST 2025 is a technology-focused academic event themed "Systemize to Monetize", highlighting how digital systems and innovation can transform ideas into valuable opportunities in the digital economy.
+
+As part of the Registration and Documentation Committee, I was responsible for managing participant registration and supporting the overall event documentation process.
+
+My responsibilities included organizing participant registration data, distributing event tickets, and assisting attendees with event-related information to ensure a smooth registration experience. In addition, I contributed to documenting the event activities by capturing photos and visual records that were later used for event reports and promotional materials.
+
+This role required strong organizational skills, attention to detail, and teamwork to coordinate with other committees and ensure both participant management and documentation tasks were handled efficiently.
+
+Through this experience, I developed practical skills in event coordination, participant management, and visual documentation while contributing to the successful execution of INFOFEST 2025.
+
+`,
+
+  media: [
+    { type: "image", src: "assets/img/portfolio/infofest.jpg" },
+    { type: "image", src: "assets/img/portfolio/infofest1.jpg" },
+    { type: "image", src: "assets/img/portfolio/infofest2.jpg" },
+     { type: "image", src: "assets/img/portfolio/infofest4.jpg" }
+  ]
+},
+
+  webportfolio: {
+  title: "Manuk – Smart Poultry Management Mobile App",
+  info: {
+    "Project Type": "Mobile Application",
+    "Development Tool": "Android Studio",
+    "Tech Stack": "Android Studio, Kotlin, XML, Firebase Realtime Database",
+    "Features": "Real-Time Monitoring, Data History, Remote Control, Notifications",
+    "Duration": "4 months",
+    "Status": "Completed"
+  },
+  description: `
+Manuk is an Android-based mobile application developed to support real-time monitoring and control of closed house broiler chicken farms through Internet of Things (IoT) integration.
+
+The application is designed as a user interface that connects farmers to environmental sensor data, including temperature and ammonia gas levels, transmitted from IoT devices (ESP32) to a cloud-based database (Firebase). Through this mobile platform, users can monitor cage conditions in real-time, access historical environmental data, and receive early warning notifications when environmental thresholds exceed safe limits.
+
+In addition to monitoring, the application enables remote manual control of cage support devices such as ventilation fans and cooling systems. This functionality allows farmers to respond quickly to environmental changes without needing to be physically present at the farm.
+
+The development of this mobile application emphasizes user-centered interface design, real-time data synchronization, and seamless integration between IoT hardware and cloud infrastructure. This project demonstrates the implementation of digital transformation in the agricultural sector by creating a smart, efficient, and data-driven poultry farm management ecosystem.
+`,
+  
+  media: [
+    { type: "image", src: "assets/img/portfolio/manuk2.jpeg" },
+    { type: "image", src: "assets/img/portfolio/manuk2.jpeg" },
+    { type: "image", src: "assets/img/portfolio/manuk3.jpg" },
+    { type: "image", src: "assets/img/portfolio/manuk4.jpeg" }
+  ]
+},
+
+reweavemobile: {
+  title: "ReWeave – Sustainable Textile Recycling Mobile App",
+  info: {
+    "Project Type": "Mobile Application",
+    "Development Tool": "Android Studio",
+    "Tech Stack": "Android Studio, Kotlin, XML, AdapterView",
+    "Features": "Textile Donation, Recycling Marketplace, Change Point Rewards, User Engagement System",
+    "Duration": "4 months",
+    "Status": "Completed"
+    
+  },
+  description: `
+ReWeave is an Android-based mobile application designed to address the growing issue of textile waste in urban environments. The platform promotes sustainable consumption and responsible production by enabling users to donate, recycle, and resell used clothing through a digital ecosystem.
+
+The application features a textile donation system that allows users to contribute reusable clothing to communities or recycling partners. In addition, ReWeave includes a marketplace where upcycled or recycled fashion products can be listed and sold, supporting a circular economy model.
+
+To encourage active participation, the app implements a reward mechanism called “Change Points.” Users earn points for donating, purchasing sustainable products, or engaging in recycling activities. These points can be redeemed for incentives, fostering long-term behavioral change toward responsible consumption.
+
+Developed using Android Studio, the application emphasizes user-friendly interface design, sustainable engagement strategies, and digital solutions aligned with SDG 11 (Sustainable Cities and Communities) and SDG 12 (Responsible Consumption and Production). ReWeave demonstrates how technology can be leveraged to reduce textile waste while empowering communities to participate in environmental sustainability.
+  `,
+  media: [
+  { type: "image", src: "assets/img/portfolio/reweaveposter.jpg" },
+  { type: "image", src: "assets/img/portfolio/reweave1.jpg" }
+  
+  ]
+},
+
+manukiot: {
+  title: "ManuK IoT – Smart Manufacturing Monitoring System",
+  info: {
+    "Project Type": "IoT System",
+    "Development Tool": "Arduino IDE",
+    "Tech Stack": "Arduino, Python, Firebase",
+    "Hardware": "ESP32, DHT22 Sensor, MQ-135 Sensor, Water Level, Relay Module, Exhaust Fan, Water Pump, Lamp", 
+    "Features": "Real-time Monitoring, Data Visualization, Automated Alerts, Remote Control",
+    "Duration": "4 months",
+    "Status": "Completed"
+    
+  },
+  description: `
+ManuK IoT is an Internet of Things (IoT) system designed for smart manufacturing environments. It enables real-time monitoring and control of industrial processes through sensor data collection, automated alerts, and remote management capabilities.
+
+The system integrates various sensors such as temperature, humidity, and air quality sensors to collect environmental data. The system also supports remote control of devices through a web interface.
+
+Key features include real-time monitoring of manufacturing parameters, automated alerts for anomalies or thresholds, and remote device control capabilities. The system is built using Arduino IDE for hardware programming and Firebase for data storage and management.
+
+The ManuK IoT system supports sustainable manufacturing practices by enabling predictive maintenance, reducing waste through optimized operations, and improving overall efficiency in production environments.
+
+  `,
+  media: [
+  { type: "image", src: "assets/img/portfolio/iot1.jpg" },
+  { type: "video", src: "assets/img/portfolio/video1.mp4" },
+  { type: "video", src: "assets/img/portfolio/video3.mp4" },
+  { type: "video", src: "assets/img/portfolio/video2.mp4" },
+  
+  
+  
+  
+  ]
+},
+connectme: {
+  title: "ConnectMe – UX Design for PECS Communication App",
+  info: {
+    "Project Type": "UX/UI Design",
+    "Design Tool": "Figma",
+    "Design Process": "User-Centered Design (UCD), Double Diamond",
+    "Key Methods": "User Persona, Wireframing, Prototyping, Usability Testing",
+    "Status": "Prototype Completed"
+  },
+
+  description: `
+ConnectMe is a mobile application concept designed to assist children with Autism Spectrum Disorder (ASD) in developing two-way communication skills through visual interaction.
+
+Children with autism often experience difficulties in social interaction and verbal communication. These communication barriers can create frustration not only for the children but also for their parents and caregivers, who may struggle to understand their needs and emotions.
+
+To address this challenge, ConnectMe adopts the concept of Augmentative and Alternative Communication (AAC), specifically the Picture Exchange Communication System (PECS). PECS enables children with autism to communicate by selecting visual symbols or pictures that represent objects, actions, or needs.
+
+Traditional PECS tools usually rely on physical picture boards or books. However, these tools often have limitations such as restricted vocabulary options and lack of interactive learning elements. ConnectMe transforms this traditional approach into a digital and interactive experience through a mobile application.
+
+The application allows children to select visual cards that trigger audio feedback, helping them associate images with spoken words and gradually build their vocabulary. The design emphasizes simple navigation, large visual elements, and minimal text to ensure accessibility for children with sensory and cognitive differences.
+
+The project was developed using a User-Centered Design (UCD) approach, focusing on understanding user needs through research, defining user personas, designing wireframes, and creating interactive prototypes.
+
+ConnectMe aims to become a Minimum Viable Product (MVP) that helps children with autism communicate more effectively while supporting caregivers in understanding their needs. The project also contributes to the Sustainable Development Goal (SDG) 10: Reduced Inequalities by promoting inclusive communication technologies.
+  `,
+
+  media: [
+    { type: "image", src: "assets/img/portfolio/connectmeposter.jpg" },
+    { type: "youtube", src: "https://www.youtube.com/embed/JrT3VYWtfq0" }
+    
+  ]
+},
+
+fuelify: {
+  title: "Fuelify – UX Design for Fuel Management App",
+  info: {
+    "Project Type": "UX/UI Design",
+    "Role": "UX Designer",
+    "Design Tool": "Figma",
+    "Design Process": "User-Centered Design (UCD), Double Diamond",
+    "Key Methods": "User Interview, Empathy Map, Persona, Crazy Eight Ideation, Prototyping",
+    "Status": "Completed"
+  },
+
+  description: `
+Fuelify is a UX design project that aims to solve a common problem faced by drivers in highly congested urban areas: running out of fuel while stuck in traffic. In large cities with heavy traffic conditions, drivers often experience anxiety and inconvenience when their vehicle’s fuel runs low and they are unable to reach a gas station quickly.
+
+This project proposes a mobile application that allows users to order fuel delivery directly to their location. Instead of leaving their vehicle or searching for the nearest gas station, users can request fuel from partner gas stations through the application, and a courier will deliver it to them.
+
+The design process was conducted using a user-centered design approach, following the Double Diamond framework. The project began with user research through interviews to better understand the frustrations and needs of drivers during traffic congestion. Insights from this research were translated into empathy maps, a user persona, and a clear problem statement.
+
+After identifying key user problems, the ideation stage involved brainstorming potential solutions using the Crazy Eight method and narrowing them down into a focused solution. The final concept was then translated into low-fidelity wireframes and later developed into high-fidelity prototypes using Figma.
+
+Key features designed in this project include:
+• Fuel delivery service directly to the user’s location  
+• Nearest gas station recommendation system  
+• Fuel usage analysis and monitoring  
+• Digital wallet for payment and transaction history  
+
+Through usability testing with several participants, the prototype was evaluated to identify usability issues and improve the overall user experience.
+
+This project demonstrates my ability to apply UX methodologies such as user research, problem framing, ideation, wireframing, prototyping, and usability testing to create a practical digital solution for real-world mobility challenges.
+  `,
+
+  media: [
+    { type: "image", src: "assets/img/portfolio/Fuelify1.jpg" },
+    { type: "image", src: "assets/img/portfolio/Fuelify2.jpg" }
+    
+  ]
+},
+imersif: {
+  title: "Dining Room Furniture AR Catalog – Augmented Reality Application",
+
+  info: {
+    "Project Type": "Augmented Reality Mobile Application",
+    "Tools": "Unity, Blender",
+    "AR Technology": "Vuforia / AR Foundation",
+    "Features": "Image Target Detection, 3D Furniture Visualization, Product Information Panel",
+    "Focus Area": "Interactive Furniture Catalog Experience",
+    "Status": "Completed"
+  },
+
+  description: `
+The Dining Room Furniture AR Catalog is an Augmented Reality (AR) mobile application designed to provide users with an interactive way to explore dining room furniture products through realistic 3D visualization.
+
+The application allows users to see furniture models appear directly in the real world using AR technology. By scanning a predefined image target, users can observe furniture items in three dimensions, making it easier to understand the shape, size, and design of each product.
+
+The application is designed with a simple and intuitive user interface to ensure smooth navigation and ease of use. It consists of three main scenes: Home Scene, AR Scene, and Credit Scene. The Home Scene serves as the main entry point where users can start the AR viewer. The AR Scene is the core feature where users can scan an image target and view furniture models in real time. The Credit Scene provides information about the developer of the application.
+
+Within the AR Scene, users can select from five different dining room furniture items such as a dining chair, dining table, cabinet, wall clock, and kettle. When a product button is selected, the corresponding 3D model appears on top of the detected image target while other models remain hidden to avoid visual overlap.
+
+To enhance the user experience, each 3D model is configured with automatic rotation so users can observe the object from multiple angles. Additionally, a product information panel appears when a model is selected, displaying basic details such as the product name, function, and price.
+
+This project demonstrates the integration of Blender for 3D modeling and Unity with AR technology to create an interactive digital catalog. The application provides a modern alternative to traditional product catalogs by combining visualization technology with user-friendly interaction.
+  `,
+
+  media: [
+    { type: "image", src: "assets/img/portfolio/imersif2.png" }
+  
+  ]
+}
+
+};
+
+// LOAD PROJECT
+if (projects[projectId]) {
+
+  const project = projects[projectId];
+
+  // SET TITLE
+  document.getElementById("project-title").innerText = project.title;
+
+  // SET DESCRIPTION
+  document.getElementById("project-description").innerText = project.description;
+
+  // BUILD INFO LIST DYNAMICALLY
+  const infoList = document.getElementById("project-info-list");
+
+  Object.entries(project.info).forEach(([key, value]) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<strong>${key}:</strong> ${value}`;
+    infoList.appendChild(li);
+  });
+
+  // ADD IMAGES
+  const imagesContainer = document.getElementById("project-images");
+
+project.media.forEach(media => {
+
+  const slide = document.createElement("div");
+  slide.className = "swiper-slide";
+
+  if (media.type === "image") {
+
+    const image = document.createElement("img");
+    image.src = media.src;
+    image.className = "img-fluid";
+    image.alt = project.title;
+
+    slide.appendChild(image);
+
+  } else if (media.type === "video") {
+
+    const video = document.createElement("video");
+    video.src = media.src;
+    video.controls = true;
+    video.className = "img-fluid";
+
+    slide.appendChild(video);
+
+  } else if (media.type === "youtube") {
+
+    const iframe = document.createElement("iframe");
+    iframe.src = media.src;
+    iframe.width = "100%";
+    iframe.height = "400";
+    iframe.frameBorder = "0";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+
+    slide.appendChild(iframe);
+  }
+
+  imagesContainer.appendChild(slide);
+});
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    speed: 600,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+
+    on: {
+      slideChange: function () {
+
+        const activeSlide = this.slides[this.activeIndex];
+
+        const youtube = activeSlide.querySelector("iframe");
+
+        if (youtube) {
+          this.autoplay.stop();
+        } else {
+          this.autoplay.start();
+        }
+
+      }
+    }
+  });
+
+  // HANDLE VIDEO
+  document.querySelectorAll("video").forEach(video => {
+
+    video.addEventListener("play", () => {
+      swiper.autoplay.stop();
+    });
+
+    video.addEventListener("ended", () => {
+      swiper.slideNext();
+      swiper.autoplay.start();
+    });
+
+  });
+
+} else {
+
+  document.getElementById("project-title").innerText = "Project Not Found";
+
+}
+
+</script>
+
+</body>
+</html>
